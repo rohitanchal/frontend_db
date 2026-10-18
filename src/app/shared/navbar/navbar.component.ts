@@ -2,7 +2,6 @@ import { Component, ElementRef, HostListener, inject } from '@angular/core';
 import { NavigationEnd, Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { filter } from 'rxjs';
 import { brand } from '../../brand';
-import { AnchorService } from '../anchor.service';
 import { BrandMarkComponent } from '../brand-mark.component';
 
 @Component({
@@ -17,7 +16,6 @@ export class NavbarComponent {
   scrolled = false;
 
   private readonly router = inject(Router);
-  private readonly anchors = inject(AnchorService);
   private readonly host = inject(ElementRef<HTMLElement>);
 
   constructor() {
@@ -61,10 +59,5 @@ export class NavbarComponent {
 
   closeMenu(): void {
     this.menuOpen = false;
-  }
-
-  goToBackup(): void {
-    this.closeMenu();
-    this.anchors.scrollIfCurrent('backup');
   }
 }

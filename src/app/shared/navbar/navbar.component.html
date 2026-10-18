@@ -40,21 +40,7 @@
         class="nav-link"
         (click)="closeMenu()"
       >About Us</a>
-      <a
-        routerLink="/login"
-        routerLinkActive="is-active"
-        ariaCurrentWhenActive="page"
-        class="nav-link"
-        (click)="closeMenu()"
-      >Sign in</a>
-      <a
-        routerLink="/register"
-        routerLinkActive="is-active"
-        ariaCurrentWhenActive="page"
-        class="nav-link"
-        (click)="closeMenu()"
-      >Create account</a>
-      <a class="mv-btn mv-btn-primary nav-cta" routerLink="/" fragment="backup" (click)="goToBackup()">Get Started</a>
+      <a class="mv-btn mv-btn-primary nav-cta" routerLink="/get-started" routerLinkActive="is-active" (click)="closeMenu()">Get Started</a>
     </div>
   </nav>
 </header>

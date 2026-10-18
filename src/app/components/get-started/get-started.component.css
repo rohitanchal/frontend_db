@@ -1,0 +1,25 @@
+.start-intro {
+  padding-bottom: 0;
+}
+
+.start-intro h1 {
+  max-width: 16ch;
+}
+
+.start-steps {
+  margin: 1.4rem 0 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 0.7rem;
+  max-width: 40rem;
+}
+
+.start-steps li {
+  color: var(--muted);
+}
+
+.start-steps strong {
+  color: var(--text);
+  font-weight: 650;
+}

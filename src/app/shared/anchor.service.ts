@@ -27,7 +27,8 @@ export class AnchorService {
 
   /** Scroll when the target section is already on the home page. */
   scrollIfCurrent(anchor: string): void {
-    if (this.router.url.split('?')[0].split('#')[0] !== '/') {
+    const path = this.router.url.split('?')[0].split('#')[0];
+    if (path !== '/home' && path !== '/') {
       return;
     }
     this.scrollToFragment(anchor);

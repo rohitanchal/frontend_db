@@ -12,7 +12,7 @@
             Turn your MongoDB database into a downloadable ZIP archive containing your collections and documents in readable JSON.
           </p>
           <div class="cta-row">
-            <a class="mv-btn mv-btn-primary" routerLink="/" fragment="backup" (click)="scrollTo('backup')">Get Started</a>
+            <a class="mv-btn mv-btn-primary" routerLink="/get-started">Get Started</a>
             <a class="mv-btn mv-btn-ghost" routerLink="/" fragment="how-it-works" (click)="scrollTo('how-it-works')">How It Works</a>
           </div>
           <p class="tagline">{{ brand.tagline }}</p>
@@ -75,115 +75,7 @@
   </div>
 </section>
 
-<section id="backup" class="block band" tabindex="-1" aria-labelledby="backup-title">
-  <div class="container">
-    <div class="export-panel">
-      <div class="row g-4 g-lg-5 align-items-start">
-        <div class="col-lg-7">
-          <p class="kicker">Export</p>
-          <h2 id="backup-title">Your database, ready to export.</h2>
-          <p class="intro">
-            Paste a MongoDB connection URI. When the backend is connected, the export will read the collections you can access and package them as JSON inside a ZIP. This page does not connect to MongoDB.
-          </p>
-
-          <form class="export-form" (ngSubmit)="requestDownload()" autocomplete="off" novalidate>
-            <label for="mongo-uri">MongoDB connection URI</label>
-            <div class="uri-field">
-              <input
-                id="mongo-uri"
-                class="uri-input"
-                [type]="uriVisible ? 'text' : 'password'"
-                [(ngModel)]="uri"
-                [ngModelOptions]="{ standalone: true }"
-                (ngModelChange)="onUriInput()"
-                [attr.aria-invalid]="validationError ? true : null"
-                [attr.aria-describedby]="describedBy"
-                placeholder="mongodb+srv://username:password@cluster.example.mongodb.net/database"
-                autocomplete="off"
-                autocapitalize="off"
-                autocorrect="off"
-                spellcheck="false"
-              />
-              <button
-                type="button"
-                class="eye-btn"
-                (click)="toggleUriVisibility()"
-                [attr.aria-pressed]="uriVisible"
-                [attr.aria-label]="uriVisible ? 'Hide connection URI' : 'Show connection URI'"
-              >
-                @if (uriVisible) {
-                  <svg viewBox="0 0 24 24" aria-hidden="true">
-                    <path d="M3 3l18 18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
-                    <path d="M10.6 6.2A11 11 0 0 1 12 6c6.5 0 10 6 10 6a18 18 0 0 1-3.1 3.7M6.2 6.9C3.8 8.6 2 12 2 12s3.5 6 10 6c1.2 0 2.4-.2 3.5-.6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
-                  </svg>
-                } @else {
-                  <svg viewBox="0 0 24 24" aria-hidden="true">
-                    <path d="M2 12s3.5-6 10-6 10 6 10 6-3.5 6-10 6S2 12 2 12Z" fill="none" stroke="currentColor" stroke-width="1.6" />
-                    <circle cx="12" cy="12" r="2.6" fill="none" stroke="currentColor" stroke-width="1.6" />
-                  </svg>
-                }
-              </button>
-            </div>
-
-            @if (validationError) {
-              <p id="uri-error" class="form-alert" role="alert">
-                <svg viewBox="0 0 24 24" aria-hidden="true">
-                  <circle cx="12" cy="12" r="8.25" fill="none" stroke="currentColor" stroke-width="1.6" />
-                  <path d="M12 8v5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
-                  <circle cx="12" cy="16.2" r="0.8" fill="currentColor" />
-                </svg>
-                <span><strong>URI required.</strong> {{ validationError }}</span>
-              </p>
-            }
-
-            <button type="submit" class="mv-btn mv-btn-primary download-btn">
-              <svg viewBox="0 0 24 24" aria-hidden="true">
-                <path d="M12 4v10M8 11l4 4 4-4M5 19h14" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" />
-              </svg>
-              Download ZIP
-            </button>
-
-            @if (notice) {
-              <p id="uri-notice" class="form-notice" role="status">
-                <svg viewBox="0 0 24 24" aria-hidden="true">
-                  <circle cx="12" cy="12" r="8.25" fill="none" stroke="currentColor" stroke-width="1.6" />
-                  <path d="M12 11v5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
-                  <circle cx="12" cy="8.2" r="0.8" fill="currentColor" />
-                </svg>
-                <span><strong>Not available yet.</strong> {{ notice }}</span>
-              </p>
-            }
-
-            <p id="uri-privacy" class="privacy-note">
-              Secure processing and credential handling will be implemented on the backend. This page does not transmit the URI.
-            </p>
-          </form>
-        </div>
-
-        <div class="col-lg-5">
-          <figure class="archive-preview">
-            <figcaption>
-              <span class="planned">Example only</span>
-              <span>Future export structure</span>
-            </figcaption>
-            <ol>
-              <li class="archive-root">
-                <svg viewBox="0 0 24 24" aria-hidden="true">
-                  <path d="M4 7.5h6l1.5 2H20v8.5a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 4 18V7.5Z" fill="none" stroke="currentColor" stroke-width="1.5" />
-                </svg>
-                db-backup.zip
-              </li>
-              <li>manifest.json</li>
-              <li>users.json</li>
-              <li>products.json</li>
-            </ol>
-            <p>Sample filenames for the intended layout. They are not read from a database.</p>
-          </figure>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+<app-backup-panel />
 
 <section id="how-it-works" class="block" tabindex="-1" aria-labelledby="how-title">
   <div class="container">
@@ -330,7 +222,7 @@
       <p class="kicker">Next</p>
       <h2 id="cta-title">Bring the busywork down to a URI and a ZIP.</h2>
       <p class="intro">When export is connected, the backup panel is the whole workflow. Until then, the path and the format are here to review.</p>
-      <a class="mv-btn mv-btn-primary" routerLink="/" fragment="backup" (click)="scrollTo('backup')">Get Started</a>
+      <a class="mv-btn mv-btn-primary" routerLink="/get-started">Get Started</a>
     </div>
   </div>
 </section>

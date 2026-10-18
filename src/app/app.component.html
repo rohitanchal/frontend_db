@@ -1,10 +1,6 @@
 <a class="skip-link" href="#main">Skip to content</a>
-@if (!bare) {
-  <app-navbar />
-}
-<main id="main" tabindex="-1" [class.is-bare]="bare">
+<app-navbar />
+<main id="main" tabindex="-1">
   <router-outlet />
 </main>
-@if (!bare) {
-  <app-footer />
-}
+<app-footer />
