@@ -1,0 +1,117 @@
+<section class="about-hero">
+  <div class="container">
+    <p class="status-pill"><span class="status-dot" aria-hidden="true"></span>{{ brand.name }}</p>
+    <h1>Database backups, stripped to the essentials.</h1>
+    <p class="intro">
+      {{ brand.name }} is being built so developers can turn a MongoDB database into a ZIP of readable JSON without assembling a backup project first.
+    </p>
+    <p class="tagline">{{ brand.tagline }}</p>
+  </div>
+</section>
+
+<section class="block" aria-labelledby="problem-title">
+  <div class="container">
+    <div class="row g-4 g-lg-5">
+      <div class="col-lg-5" appReveal>
+        <p class="kicker">The problem</p>
+        <h2 id="problem-title">The job is simple. The tooling often is not.</h2>
+      </div>
+      <div class="col-lg-7" appReveal [appRevealDelay]="80">
+        <p class="intro about-prose">
+          Exporting a database should not require a pile of one-off commands, format decisions, and file shuffling. The job is easy to describe: connect, collect the documents, and leave with an archive.
+        </p>
+        <p class="intro about-prose">
+          {{ brand.name }} aims at that gap. Paste a connection URI, let the server write each collection as JSON, and download one ZIP. That server step is still to be built. This page only explains the intent.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block band" aria-labelledby="vision-title">
+  <div class="container">
+    <div appReveal>
+      <p class="kicker">Vision</p>
+      <h2 id="vision-title">Make database backups straightforward for developers.</h2>
+      <p class="intro vision-copy">
+        A short path from a connection string to an archive of ordinary JSON. Readable documents, one download, and no extra ceremony around a task that should already feel routine.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="block" aria-labelledby="principles-title">
+  <div class="container">
+    <div appReveal>
+      <p class="kicker">Principles</p>
+      <h2 id="principles-title">How the product should behave.</h2>
+    </div>
+    <div class="row g-3 principle-row">
+      <div class="col-md-6" appReveal [appRevealDelay]="0">
+        <article class="feature">
+          <h3>Simplicity</h3>
+          <p>One path from a connection string to an archive. The interface should not grow a second product around the backup.</p>
+        </article>
+      </div>
+      <div class="col-md-6" appReveal [appRevealDelay]="60">
+        <article class="feature">
+          <h3>Transparency</h3>
+          <p>The export format is meant to be JSON you can open and inspect, including Extended JSON for BSON values.</p>
+        </article>
+      </div>
+      <div class="col-md-6" appReveal [appRevealDelay]="120">
+        <article class="feature">
+          <h3>Security-conscious engineering</h3>
+          <p>Credentials, storage, and limits will be handled deliberately in the backend. The interface will not claim controls that are not in place.</p>
+        </article>
+      </div>
+      <div class="col-md-6" appReveal [appRevealDelay]="180">
+        <article class="feature">
+          <h3>Developer experience</h3>
+          <p>A workflow that fits how developers already work: a URI, a file you can unzip, and documents you can read.</p>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block band" aria-labelledby="flow-title">
+  <div class="container">
+    <div appReveal>
+      <p class="kicker">Workflow</p>
+      <h2 id="flow-title">URI, export, archive.</h2>
+      <p class="intro">An illustration of the intended flow. This page does not connect to a database.</p>
+    </div>
+    <ol class="flow" appReveal [appRevealDelay]="80">
+      <li>
+        <span class="flow-index">01</span>
+        <h3>URI</h3>
+        <code>mongodb+srv://…</code>
+        <p>The connection string you paste.</p>
+      </li>
+      <li>
+        <span class="flow-index">02</span>
+        <h3>Database export</h3>
+        <code>collections → JSON</code>
+        <p>A server-side read, once it exists.</p>
+      </li>
+      <li>
+        <span class="flow-index">03</span>
+        <h3>ZIP archive</h3>
+        <code>db-backup.zip</code>
+        <p>The file you would save locally.</p>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<section class="block cta-block">
+  <div class="container">
+    <div class="final-cta" appReveal>
+      <p class="kicker">Home</p>
+      <h2>The backup panel is where that flow starts.</h2>
+      <p class="intro">It accepts a URI today and explains that the download arrives with the backend. Nothing is exported from this page.</p>
+      <a class="mv-btn mv-btn-primary" routerLink="/" fragment="backup" (click)="scrollToBackup()">Open the backup panel</a>
+    </div>
+  </div>
+</section>

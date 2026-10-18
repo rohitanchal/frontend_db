@@ -1,0 +1,74 @@
+<app-auth-layout>
+  <h1>Create your MongoVault account</h1>
+  <p class="auth-lead">Verify your email before signing in. This form only demonstrates that step. It does not create an account.</p>
+
+  <form class="stack-form" (ngSubmit)="createAccount()" novalidate>
+    @if (summary) {
+      <p class="form-alert" role="alert"><strong>Check the form.</strong> {{ summary }}</p>
+    }
+    @if (notice) {
+      <p class="form-notice" role="status"><strong>Static demo.</strong> {{ notice }}</p>
+    }
+
+    <div>
+      <label class="field-label" for="full-name">Full name</label>
+      <div class="text-field" [class.is-invalid]="!!nameError">
+        <input id="full-name" type="text" autocomplete="name" [value]="name" (input)="onText('name', $event)" [attr.aria-invalid]="nameError ? true : null" [attr.aria-describedby]="nameError ? 'full-name-error' : null" />
+      </div>
+      @if (nameError) {
+        <p id="full-name-error" class="field-error">{{ nameError }}</p>
+      }
+    </div>
+
+    <div>
+      <label class="field-label" for="register-email">Email address</label>
+      <div class="text-field" [class.is-invalid]="!!emailError">
+        <input id="register-email" type="email" autocomplete="email" [value]="email" (input)="onText('email', $event)" [attr.aria-invalid]="emailError ? true : null" [attr.aria-describedby]="emailError ? 'register-email-error' : null" />
+      </div>
+      @if (emailError) {
+        <p id="register-email-error" class="field-error">{{ emailError }}</p>
+      }
+    </div>
+
+    <app-password-field
+      label="Password"
+      inputId="register-password"
+      autocomplete="new-password"
+      [value]="password"
+      [error]="passwordError"
+      (valueChange)="password = $event; summary = ''"
+    />
+    <app-password-field
+      label="Confirm password"
+      inputId="register-confirm"
+      autocomplete="new-password"
+      [value]="confirm"
+      [error]="confirmError"
+      (valueChange)="confirm = $event; summary = ''"
+    />
+
+    <div>
+      <label class="check-row">
+        <input type="checkbox" [(ngModel)]="accepted" [ngModelOptions]="{ standalone: true }" (ngModelChange)="summary = ''" />
+        <span>I accept the Terms of Service and Privacy Policy for this preview. Those documents are not published yet.</span>
+      </label>
+      @if (termsError) {
+        <p class="field-error">{{ termsError }}</p>
+      }
+    </div>
+
+    <button type="submit" class="mv-btn mv-btn-primary" [disabled]="busy" [attr.aria-busy]="busy">
+      @if (busy) {
+        <span class="btn-spinner" aria-hidden="true"></span>
+        Creating account…
+      } @else {
+        Create Account
+      }
+    </button>
+  </form>
+
+  <p class="form-links">
+    <a routerLink="/login">Already have an account? Sign in</a>
+    <a routerLink="/verify-email">Already have a code? Verify email</a>
+  </p>
+</app-auth-layout>

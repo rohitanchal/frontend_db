@@ -1,0 +1,24 @@
+<footer class="site-footer">
+  <div class="container">
+    <div class="row gy-4">
+      <div class="col-lg-8">
+        <a routerLink="/" class="brand footer-brand">
+          <app-brand-mark />
+          <span class="brand-name">{{ brand.name }}</span>
+        </a>
+        <p class="footer-summary">{{ brand.summary }}</p>
+        <p class="footer-tagline">{{ brand.tagline }}</p>
+      </div>
+      <div class="col-lg-4">
+        <nav class="footer-nav" aria-label="Footer">
+          <a routerLink="/" routerLinkActive="is-active" [routerLinkActiveOptions]="{ exact: true }" ariaCurrentWhenActive="page">Home</a>
+          <a routerLink="/about-us" routerLinkActive="is-active" ariaCurrentWhenActive="page">About Us</a>
+          <a routerLink="/register" routerLinkActive="is-active" ariaCurrentWhenActive="page">Create account</a>
+          <a routerLink="/login" routerLinkActive="is-active" ariaCurrentWhenActive="page">Sign in</a>
+          <a routerLink="/dashboard" routerLinkActive="is-active" ariaCurrentWhenActive="page">Dashboard preview</a>
+        </nav>
+      </div>
+    </div>
+    <p class="legal">© {{ year }} {{ brand.name }} · Developed by Rohit Anchal</p>
+  </div>
+</footer>

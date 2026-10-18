@@ -1,0 +1,12 @@
+:host {
+  display: block;
+}
+
+.mv-btn {
+  width: 100%;
+}
+
+.auth-lead strong {
+  color: var(--text);
+  font-weight: 650;
+}

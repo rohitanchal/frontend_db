@@ -1,0 +1,79 @@
+.about-hero {
+  padding: 2.8rem 0 1rem;
+}
+
+.about-prose + .about-prose {
+  margin-top: 1rem;
+}
+
+.vision-copy {
+  max-width: 46rem;
+  font-size: 1.2rem;
+}
+
+.principle-row {
+  margin-top: 1.6rem;
+}
+
+.flow {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.85rem;
+  list-style: none;
+  margin: 1.8rem 0 0;
+  padding: 0;
+}
+
+.flow li {
+  position: relative;
+  padding: 1.15rem 1.15rem 1.2rem;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: rgba(12, 18, 16, 0.72);
+}
+
+.flow-index {
+  display: block;
+  margin-bottom: 0.55rem;
+  color: var(--emerald-bright);
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+}
+
+.flow code {
+  display: block;
+  margin: 0.35rem 0 0.45rem;
+  color: var(--text);
+  font-family: var(--mono);
+  font-size: 0.95rem;
+}
+
+.flow p {
+  color: var(--muted);
+}
+
+@media (min-width: 992px) {
+  .flow {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2.5rem;
+  }
+
+  .flow li:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: -1.7rem;
+    width: 0.9rem;
+    height: 0.9rem;
+    border-top: 1.5px solid rgba(140, 240, 204, 0.8);
+    border-right: 1.5px solid rgba(140, 240, 204, 0.8);
+    transform: translateY(-50%) rotate(45deg);
+  }
+}
+
+@media (max-width: 767.98px) {
+  .about-hero {
+    padding-top: 1.5rem;
+  }
+}

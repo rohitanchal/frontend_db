@@ -1,0 +1,60 @@
+<header class="site-nav" [class.is-scrolled]="scrolled" [class.is-open]="menuOpen">
+  <nav class="nav-bar container" aria-label="Primary">
+    <a routerLink="/" class="brand" (click)="closeMenu()">
+      <app-brand-mark />
+      <span class="brand-name">{{ brand.name }}</span>
+    </a>
+
+    <button
+      type="button"
+      class="nav-toggle"
+      (click)="toggleMenu($event)"
+      [attr.aria-expanded]="menuOpen"
+      aria-controls="primary-menu"
+      [attr.aria-label]="menuOpen ? 'Close menu' : 'Open menu'"
+    >
+      @if (menuOpen) {
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" />
+        </svg>
+      } @else {
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M4 7h16M4 12h16M4 17h16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" />
+        </svg>
+      }
+    </button>
+
+    <div id="primary-menu" class="nav-panel" [class.is-open]="menuOpen">
+      <a
+        routerLink="/"
+        routerLinkActive="is-active"
+        [routerLinkActiveOptions]="{ exact: true }"
+        ariaCurrentWhenActive="page"
+        class="nav-link"
+        (click)="closeMenu()"
+      >Home</a>
+      <a
+        routerLink="/about-us"
+        routerLinkActive="is-active"
+        ariaCurrentWhenActive="page"
+        class="nav-link"
+        (click)="closeMenu()"
+      >About Us</a>
+      <a
+        routerLink="/login"
+        routerLinkActive="is-active"
+        ariaCurrentWhenActive="page"
+        class="nav-link"
+        (click)="closeMenu()"
+      >Sign in</a>
+      <a
+        routerLink="/register"
+        routerLinkActive="is-active"
+        ariaCurrentWhenActive="page"
+        class="nav-link"
+        (click)="closeMenu()"
+      >Create account</a>
+      <a class="mv-btn mv-btn-primary nav-cta" routerLink="/" fragment="backup" (click)="goToBackup()">Get Started</a>
+    </div>
+  </nav>
+</header>

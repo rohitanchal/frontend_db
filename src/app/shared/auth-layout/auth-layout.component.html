@@ -1,0 +1,26 @@
+<section class="auth-page">
+  <div class="auth-main">
+    <a routerLink="/" class="auth-brand">
+      <app-brand-mark />
+      <span>{{ brand.name }}</span>
+    </a>
+    <div class="auth-copy">
+      <ng-content />
+    </div>
+  </div>
+  <aside class="auth-aside" aria-hidden="true">
+    <p class="kicker">{{ brand.name }}</p>
+    <p class="aside-title">A URI in. A ZIP out.</p>
+    <p class="aside-copy">{{ brand.tagline }}</p>
+    <div class="aside-stage">
+      <span class="mini-cyl"></span>
+      <span class="mini-cyl tall"></span>
+      <span class="mini-zip">db-backup.zip</span>
+    </div>
+    <ul>
+      <li>Readable JSON collections</li>
+      <li>One archive to save locally</li>
+      <li>Backend export still to come</li>
+    </ul>
+  </aside>
+</section>
