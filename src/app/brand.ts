@@ -3,5 +3,5 @@ export const brand = {
   name: 'MongoVault',
   tagline: 'Your database. Your backup. One click away.',
   summary:
-    'A developer tool for turning a MongoDB database into a ZIP of collection JSON. Server-side export is not connected on this site yet.',
+    'A developer tool for turning a MongoDB database into a ZIP of collection JSON.',
 };

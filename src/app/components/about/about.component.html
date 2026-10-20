@@ -62,7 +62,7 @@
       <div class="col-md-6" appReveal [appRevealDelay]="120">
         <article class="feature">
           <h3>Security-conscious engineering</h3>
-          <p>Credentials, storage, and limits will be handled deliberately in the backend. The interface will not claim controls that are not in place.</p>
+          <p>The backup API uses the URI for the export request and does not store the ZIP.</p>
         </article>
       </div>
       <div class="col-md-6" appReveal [appRevealDelay]="180">
@@ -110,7 +110,7 @@
     <div class="final-cta" appReveal>
       <p class="kicker">Home</p>
       <h2>The backup panel is where that flow starts.</h2>
-      <p class="intro">Get Started accepts a URI today and explains that the download arrives with the backend. Nothing is exported from this page.</p>
+      <p class="intro">Get Started sends the URI to the backup API and downloads the ZIP. This page does not open a database connection.</p>
       <a class="mv-btn mv-btn-primary" routerLink="/get-started">Get Started</a>
     </div>
   </div>

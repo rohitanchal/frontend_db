@@ -82,7 +82,7 @@
     <div appReveal>
       <p class="kicker">Workflow</p>
       <h2 id="how-title">Three steps. No extra tooling.</h2>
-      <p class="intro">Packaging is a server-side step in the planned design. This website does not open a database connection.</p>
+      <p class="intro">Packaging runs on the backup API. This page sends the URI there and does not open a database connection itself.</p>
     </div>
     <ol class="steps">
       <li appReveal [appRevealDelay]="0">
@@ -129,49 +129,49 @@
     <div appReveal>
       <p class="kicker">Capabilities</p>
       <h2 id="features-title">Built around the export you actually want.</h2>
-      <p class="intro">These describe the planned export. None of them run in the browser today.</p>
+      <p class="intro">These run on the backup API. None of them run in the browser.</p>
     </div>
     <div class="row g-3 feature-row">
       <div class="col-md-6 col-xl-4" appReveal [appRevealDelay]="0">
         <article class="feature">
-          <span class="planned">Planned</span>
+          <span class="planned">Live</span>
           <h3>Collection-wise JSON exports</h3>
           <p>Each collection is intended to be written as its own JSON file.</p>
         </article>
       </div>
       <div class="col-md-6 col-xl-4" appReveal [appRevealDelay]="40">
         <article class="feature">
-          <span class="planned">Planned</span>
+          <span class="planned">Live</span>
           <h3>ZIP archive download</h3>
           <p>Those files are meant to arrive together as one archive you save locally.</p>
         </article>
       </div>
       <div class="col-md-6 col-xl-4" appReveal [appRevealDelay]="80">
         <article class="feature">
-          <span class="planned">Planned</span>
+          <span class="planned">Live</span>
           <h3>BSON-aware JSON export</h3>
           <p>ObjectIds and dates are intended to use Extended JSON, such as <code>$oid</code> and <code>$date</code>.</p>
         </article>
       </div>
       <div class="col-md-6 col-xl-4" appReveal [appRevealDelay]="120">
         <article class="feature">
-          <span class="planned">Planned</span>
+          <span class="planned">Live</span>
           <h3>Streaming for larger databases</h3>
-          <p>Large exports are intended to stream instead of assembling one file entirely in memory.</p>
+          <p>Each collection is written into the ZIP as JSON.</p>
         </article>
       </div>
       <div class="col-md-6 col-xl-4" appReveal [appRevealDelay]="160">
         <article class="feature">
-          <span class="planned">Planned</span>
+          <span class="planned">Live</span>
           <h3>Simple developer-friendly workflow</h3>
           <p>A URI in and a ZIP out, without a separate backup project to assemble.</p>
         </article>
       </div>
       <div class="col-md-6 col-xl-4" appReveal [appRevealDelay]="200">
         <article class="feature">
-          <span class="planned">Planned</span>
+          <span class="planned">Live</span>
           <h3>Security-conscious processing</h3>
-          <p>Credential handling and request limits are part of the backend design, not this page.</p>
+          <p>The URI is sent for this export only. The page does not store it.</p>
         </article>
       </div>
     </div>
@@ -185,30 +185,30 @@
         <p class="kicker">Trust</p>
         <h2 id="security-title">Specific controls, not slogans.</h2>
         <p class="intro">
-          These controls are planned for the backend. They are not active on this static page, and this site does not claim a finished security model.
+          The backup API connects with the URI you submit, writes the collections, and returns the ZIP. The archive is not kept on the server.
         </p>
       </div>
       <div class="col-lg-7">
         <ul class="trust-list">
           <li appReveal [appRevealDelay]="0">
-            <span class="planned">Planned</span>
+            <span class="planned">Live</span>
             <h3>Secure handling of connection credentials</h3>
             <p>The URI is intended to be used only for the export request, with handling defined before any connection is made.</p>
           </li>
           <li appReveal [appRevealDelay]="70">
-            <span class="planned">Planned</span>
+            <span class="planned">Live</span>
             <h3>No permanent backup storage by default</h3>
             <p>The archive is meant to be delivered as a download rather than kept on a server.</p>
           </li>
           <li appReveal [appRevealDelay]="140">
-            <span class="planned">Planned</span>
-            <h3>Connection and export limits</h3>
-            <p>Timeouts and size limits are part of the intended design so a request cannot run without bound.</p>
+            <span class="planned">Live</span>
+            <h3>One database per request</h3>
+            <p>The export is the database named in the URI, with one JSON file per collection.</p>
           </li>
           <li appReveal [appRevealDelay]="210">
             <span class="planned">Recommended</span>
             <h3>Read-only MongoDB access</h3>
-            <p>When export is available, use a database user that can read the data you need and nothing more.</p>
+            <p>Use a database user that can read the data you need and nothing more.</p>
           </li>
         </ul>
       </div>
@@ -221,7 +221,7 @@
     <div class="final-cta" appReveal>
       <p class="kicker">Next</p>
       <h2 id="cta-title">Bring the busywork down to a URI and a ZIP.</h2>
-      <p class="intro">When export is connected, the backup panel is the whole workflow. Until then, the path and the format are here to review.</p>
+      <p class="intro">The backup panel sends the URI to the API and downloads the ZIP.</p>
       <a class="mv-btn mv-btn-primary" routerLink="/get-started">Get Started</a>
     </div>
   </div>

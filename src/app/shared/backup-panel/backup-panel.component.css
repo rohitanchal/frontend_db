@@ -121,6 +121,11 @@
   width: 100%;
 }
 
+.download-btn:disabled {
+  cursor: progress;
+  opacity: 0.72;
+}
+
 .privacy-note {
   margin-top: 0.9rem;
   color: var(--faint);

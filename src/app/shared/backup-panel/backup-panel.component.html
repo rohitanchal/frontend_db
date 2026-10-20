@@ -6,7 +6,7 @@
           <p class="kicker">Export</p>
           <h2 id="backup-title">Your database, ready to export.</h2>
           <p class="intro">
-            Paste a MongoDB connection URI. When the backend is connected, the export will read the collections you can access and package them as JSON inside a ZIP. This page does not connect to MongoDB.
+            Paste a MongoDB connection URI. The backup API reads the collections you can access and returns them as JSON inside a ZIP. This page does not open the database itself.
           </p>
 
           <form class="export-form" (ngSubmit)="requestDownload()" autocomplete="off" novalidate>
@@ -59,26 +59,26 @@
               </p>
             }
 
-            <button type="submit" class="mv-btn mv-btn-primary download-btn">
+            <button type="submit" class="mv-btn mv-btn-primary download-btn" [disabled]="downloading">
               <svg viewBox="0 0 24 24" aria-hidden="true">
                 <path d="M12 4v10M8 11l4 4 4-4M5 19h14" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" />
               </svg>
-              {{ downloadLabel }}
+              {{ downloading ? 'Preparing backup…' : downloadLabel }}
             </button>
 
             @if (notice) {
-              <p id="uri-notice" class="form-notice" role="status">
+              <p id="uri-notice" [class]="noticeIsError ? 'form-alert' : 'form-notice'" role="status">
                 <svg viewBox="0 0 24 24" aria-hidden="true">
                   <circle cx="12" cy="12" r="8.25" fill="none" stroke="currentColor" stroke-width="1.6" />
                   <path d="M12 11v5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
                   <circle cx="12" cy="8.2" r="0.8" fill="currentColor" />
                 </svg>
-                <span><strong>Not available yet.</strong> {{ notice }}</span>
+                <span>{{ notice }}</span>
               </p>
             }
 
             <p id="uri-privacy" class="privacy-note">
-              Secure processing and credential handling will be implemented on the backend. This page does not transmit the URI.
+              The URI is sent to the MongoVault API for this export only. The API does not store it.
             </p>
           </form>
         </div>
@@ -87,7 +87,7 @@
           <figure class="archive-preview">
             <figcaption>
               <span class="planned">Example only</span>
-              <span>Future export structure</span>
+              <span>Export structure</span>
             </figcaption>
             <ol>
               <li class="archive-root">
