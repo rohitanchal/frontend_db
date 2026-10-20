@@ -12,11 +12,21 @@ export class BackupApiService {
   private readonly http = inject(HttpClient);
 
   download(uri: string): Observable<HttpResponse<Blob>> {
-    return this.http.post('/api/backup/download', { uri }, {
+    return this.http.post(backupApiUrl('/api/backup/download'), { uri }, {
       observe: 'response',
       responseType: 'blob',
     });
   }
+}
+
+const LIVE_API = 'https://mongovault-droz.onrender.com';
+
+export function backupApiUrl(path: string): string {
+  const host = globalThis.location?.hostname;
+  if (host === 'localhost' || host === '127.0.0.1') {
+    return path;
+  }
+  return `${LIVE_API}${path}`;
 }
 
 export function backupFilename(header: string | null): string {
